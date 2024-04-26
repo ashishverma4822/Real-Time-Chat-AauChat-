@@ -1,0 +1,117 @@
+doctype html
+html
+    head
+        title= "AauChat"
+        script(src='/chat.js')
+        script(src='/socket.io/socket.io.js')
+        style.
+            body {
+                background-color: #2c3e50; /* Dark background color */
+                color: #fff; /* Light text color */
+                font-family: Arial, sans-serif;
+                margin: 0;
+                padding: 0;
+            }
+            #content {
+                width: 500px;
+                height: 300px;
+                margin: 20px auto;
+                border: solid 1px #34495e;
+                border-radius: 10px;
+                overflow-y: scroll;
+                padding: 10px;
+                background-color: #34495e; /* Darker background color */
+            }
+            .message {
+                background-color: #2980b9; /* Blue message box */
+                color: #fff;
+                padding: 10px;
+                border-radius: 5px;
+                margin-bottom: 10px;
+                max-width: 80%;
+            }
+            .message.self {
+                background-color: #27ae60; /* Green message box for user's own messages */
+            }
+            .message-text {
+                margin: 0;
+            }
+            .controls {
+                text-align: center;
+                margin-top: 20px;
+            }
+            
+            input#name,input#field {
+                width: 300px;
+                margin-bottom: 10px;
+                padding: 10px;
+                border: none;
+                background-color: #132043; /* Dark input background */
+                color: #fff; /* Light text color */
+                border-radius: 5px;
+                transition: background-color 0.3s ease, border-bottom 0.3s ease;
+            }
+
+            input#name:focus,input#field:focus {
+                border-bottom: 2px solid #3498db; /* Blue bottom border on focus */
+                outline: none;
+            }
+            input#name::placeholder,input#field::placeholder {
+                color: #aaa; /* Placeholder text color */
+            }
+
+            input[type="text"] {
+                width: 300px;
+                margin-bottom: 10px;
+                padding: 10px;
+                border: none;
+                background-color: #2c3e50; /* Dark input background */
+                color: #fff; /* Light text color */
+                border-bottom: 2px solid #fff; /* White bottom border */
+                border-radius: 5px;
+                transition: border-bottom 0.3s ease;
+            }
+            input[type="text"]:focus {
+                border-bottom: 2px solid #3498db; /* Blue bottom border on focus */
+                outline: none;
+            }
+            input#send {
+                background-color: #3498db; /* Blue send button */
+                color: white;
+                border: none;
+                padding: 10px 20px;
+                text-align: center;
+                text-decoration: none;
+                display: inline-block;
+                font-size: 16px;
+                margin: 4px 2px;
+                cursor: pointer;
+                border-radius: 5px;
+                transition: background-color 0.3s ease;
+            }
+            input#send:hover {
+                background-color: #2980b9; /* Darker blue on hover */
+            }
+            .title {
+                text-align: center;
+                font-size: 48px;
+                margin-top: 50px;
+                text-shadow: 0 0 10px #00ffff, 0 0 20px #00ffff, 0 0 30px #00ffff, 0 0 40px #00ffff, 0 0 50px #00ffff, 0 0 60px #00ffff, 0 0 70px #00ffff; /* Neon text effect */
+                animation: neon 1.5s ease-in-out infinite alternate;
+            }
+            @keyframes neon {
+                from {
+                    text-shadow: 0 0 10px #00ffff, 0 0 20px #00ffff, 0 0 30px #00ffff, 0 0 40px #00ffff, 0 0 50px #00ffff, 0 0 60px #00ffff, 0 0 70px #00ffff; /* Neon text effect */
+                }
+                to {
+                    text-shadow: 0 0 10px #00ff00, 0 0 20px #00ff00, 0 0 30px #00ff00, 0 0 40px #00ff00, 0 0 50px #00ff00, 0 0 60px #00ff00, 0 0 70px #00ff00; /* Neon text effect */
+                }
+            }
+    body
+        .title AauChat
+        #content
+        .controls
+            br
+            | Message :
+            input#field
+            input#send(type='button', value='Send')
